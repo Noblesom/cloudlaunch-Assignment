@@ -1,0 +1,35 @@
+# CloudLaunch Assignment
+
+## Task 1: Static Website Hosting
+
+- Created a public S3 bucket: `cloudlaunch-site-bucket`.
+- Hosted a basic static website: [View Site](http://cloudlaunch-site-bucket0895.s3-website-us-east-1.amazonaws.com/).
+- Uploaded HTML and image files.
+- Created private S3 bucket: `cloudlaunch-private-bucket` (GetObject/PutObject for IAM user only).
+- Created visible-only bucket: `cloudlaunch-visible-only-bucket` (listable, no content access).
+- Created IAM user: `cloudlaunch-user` with custom policy attached (`cloudlaunch-user-policy.json`).
+
+## Task 2: VPC Setup
+
+- Created VPC: `cloudlaunch-vpc` with CIDR `10.0.0.0/16`.
+- Created public and private subnets.
+- Set up Internet Gateway and attached to VPC.
+- Created route tables:
+  - `cloudlaunch-public-rtb` → Public subnets, routes 0.0.0.0/0 → IGW
+  - `cloudlaunch-app-rt`, `cloudlaunch-db-rtb` → Private subnets, no internet access
+- Created Security Groups:
+  - `cloudlaunch-app-sg` → HTTP (port 80) within VPC
+  - `cloudlaunch-db-sg` → MySQL (port 3306) from app subnet only
+
+## S3 Links
+
+- Static website: [CloudLaunch Site](http://cloudlaunch-site-bucket0895.s3-website-us-east-1.amazonaws.com/)
+
+## IAM Policy
+
+See attached `cloudlaunch-user-policy.json` file.
+
+## Notes
+
+- All resources are within AWS Free Tier.
+- No EC2, RDS, or NAT Gateway resources were created.
