@@ -31,5 +31,4 @@ See attached `cloudlaunch-user-policy.json` file.
 
 ## Notes
 
-- All resources are within AWS Free Tier.
 - No EC2, RDS, or NAT Gateway resources were created.
